@@ -12,7 +12,7 @@
 }
 
 .landAndUp{
-    visibility: hidden;
+       display:none
        }
    
 body {
@@ -127,8 +127,8 @@ li {
       }
 
       .landAndUp{
-        visibility: visible;
-       
+        
+       display: initial;
        
        }
 
@@ -138,9 +138,8 @@ li {
     display: none;
   }
   .landAndUp{
-    visibility: visible;
    
-   
+   display:initial
    }
 }
 
