@@ -16,22 +16,38 @@ class MixOrMatch {
         this.timeRemaining = this.totalTime; // reset the time each time game resets
         this.matchedCards = []; // holds matched cards
         this.busy = true; // changes to false when game starts
+    
+    setTimeout(()=> {
+        this.shuffleCards();
+        this.countDown =this.startCountDown();
+        this.busy =false;
+    },500);
+        this.hideCards();
+        this.timer.innerText= this.timeRemaining;
 
-    }
+      }
+    hideCards(){
+        this.cardsArray.forEach(card =>{
+            card.classList.remove("visable");
+            card.classList.remove("matched");
+    });
+}
 
-    flipCard(card) {
+        
+    
+
+flipCard(card) {
         if (this.canFlipCard(card)) { // checks if card can be flipped
             card.classList.add("cardFront");
 
             // if statement - should we check for a match?
         }
-
-
     }
     shuffleCards() { //Fisher Yates
         for (let i = this.cardsArray.length - 1; i > 0; i--) { // loops through the array length for the cards
             let randIndex = Math.floor(Math.random() * (i + 1)); // create a random number from the array lengthy
-            this.cardsArray. 
+            this.cardsArray[randIndex].style.order=i; // taking random item in the grid list
+            this.cardsArray[i].style.order =randIndex; //changing the items order
 
         }
 
@@ -43,6 +59,7 @@ class MixOrMatch {
         // if all three values are false, the statement returns true and you can flip the card
     }
 }
+
 
 
 
