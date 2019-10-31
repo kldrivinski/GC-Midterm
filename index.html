@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <div class="head">
+  <body>
+    <div class="portraitMode">
+      <h1 class="portrait">🙃please flip to landscape to play 🙃</h1>
+    </div>
+    <div class="landAndUp">
+      <div class="head">
         <h1>Memory Game</h1>
         <div class="buttons">
-
-            <button class="start">Start</button>
-            <button>Restart</button>
-            <!-- <button onclick="location.reload();">Restart</button> -->
-            <div class="timer">Timer</div>
+          <button class="start">Start</button>
+          <button>Restart</button>
+          <!-- <button onclick="location.reload();">Restart</button> -->
+          <div class="timer">Timer</div>
         </div>
-    </div>
-    <div class="todo">
+      </div>
+      <div class="todo">
         <h2>Instructions</h2>
         <Ul>
-            <li>1. Push Start</li>
-            <li>2. Click to match the cards</li>
-            <li>3. Win the game!</li>
-            <li>4. Press Restart to reset the board</li>
+          <li>1. Push Start</li>
+          <li>2. Click to match the cards</li>
+          <li>3. Win the game!</li>
+          <li>4. Press Restart to reset the board</li>
         </Ul>
+      </div>
+
+      <Div class="master">
+        <div class="cardBack"></div>
+        <div class="cardBack"></div>
+        <div class="cardBack"></div>
+        <div class="cardBack"></div>
+        <div class="cardBack"></div>
+        <div class="cardBack"></div>
+
+        <div id="card1" class="cardFront"></div>
+        <div id="card1" class="cardFront"></div>
+        <div id="card2" class="cardFront"></div>
+        <div id="card2" class="cardFront"></div>
+        <div id="card3" class="cardFront"></div>
+        <div id="card3" class="cardFront"></div>
+      </Div>
     </div>
-
-    <Div class="master">
-        <div class="cardBack"></div>
-        <div class="cardBack"></div>
-        <div class="cardBack"></div>
-        <div class="cardBack"></div>
-        <div class="cardBack"></div>
-        <div class="cardBack"></div>
-
-        <div id="card1" class="cardFront"></div>
-        <div id="card1" class="cardFront"></div>
-        <div id="card2" class="cardFront"></div>
-        <div id="card2" class="cardFront"></div>
-        <div id="card3" class="cardFront"></div>
-        <div id="card3" class="cardFront"></div>
-    </Div>
-
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>

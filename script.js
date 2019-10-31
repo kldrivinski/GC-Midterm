@@ -41,5 +41,3 @@
 // Reset --- refresh
 
 
-
-location.reload();
