@@ -1,20 +1,19 @@
 class MixOrMatch {
   constructor(totalTime, cards) {
     this.cardsArray = cards;
-    this.totalTime - totalTime;
+    this.totalTime = totalTime;
     this.timeRemaining = totalTime;
     this.timer = document.getElementById("time-remaining");
   }
 
   startGame() {
     this.cardToCheck = null; // when a card is flipped, it becomes the card to check against the next card
-    this.totalClicks = 0;
     this.timeRemaining = this.totalTime; // reset the time each time game resets
     this.matchedCards = []; // holds matched cards
     this.busy = true; // changes to false when game starts
 
-    setTimeout(() => {
-      this.shuffleCards();
+    setTimeout(() => { // sets a timeout for .5 second to shuffle cards at the beginning
+      this.shuffleCards(this.cardsArray);
       this.countDown = this.startCountDown();
       this.busy = false;
     }, 500);
@@ -25,7 +24,7 @@ class MixOrMatch {
 
   startCountDown() {
     return setInterval(() => {
-      // function that counts down and logs game over when it's done
+      // function that counts down for 1 minute and logs game over when it's done
       this.timeRemaining--;
       this.timer.innerText = this.timeRemaining;
       if (this.timeRemaining === 0) this.gameOver();
@@ -33,16 +32,16 @@ class MixOrMatch {
   }
 
   gameOver() {
-    // looks at when the countdown ends and shows a game ovet overal
+    // looks at when the countdown ends and shows a game over
     clearInterval(this.countDown);
     document.getElementById("game-over-text").classList.add("visible");
   }
-  victory() {
+  victory() { // shows the victory screen on win
     clearInterval(this.countDown);
     document.getElementById("victory-text").classList.add("visible");
   }
 
-  hideCards() {
+  hideCards() { // function to bring cards back
     this.cardsArray.forEach(card => {
       card.classList.remove("visible");
       card.classList.remove("matched");
@@ -52,10 +51,14 @@ class MixOrMatch {
   flipCard(card) {
     if (this.canFlipCard(card)) {
       // checks if card can be flipped
-      card.classList.add("cardFront");
+      card.classList.add("visible"); // shows them if they can be flipped
 
-      if (this.cardToCheck) this.checkForCardMatch(card);
-      else this.cardToCheck = card;
+      if (this.cardToCheck) { // runs function to check for match once flipped
+        this.checkForCardMatch(card);
+      }
+      else {
+        this.cardToCheck = card;
+      }
       // if statement - should we check for a match?
     }
   }
@@ -64,9 +67,10 @@ class MixOrMatch {
       // checks to see if the card type for each clicked is the same
       this.checkMatch(card, this.cardToCheck);
     // if so, runs the checkMatch function
-    else this.cardMisMatch(card, this.cardToCheck); // if not, runs the misMatch function
+    else
+      this.cardMisMatch(card, this.cardToCheck); // if not, runs the misMatch function
 
-    this.cardToCheck = null; // sets back to null to continute the game
+    this.cardToCheck = null; // sets back to null to continue the game
   }
 
   cardMatch(card1, card2) {
@@ -90,35 +94,33 @@ class MixOrMatch {
     }, 1000);
   }
 
-  shuffleCards() {
+  shuffleCards(cardsArray) {
     //Fisher Yates
-    for (let i = this.cardsArray.length - 1; i > 0; i--) {
+    for (let i = cardsArray.length - 1; i > 0; i--) {
       // loops through the array length for the cards
       let randIndex = Math.floor(Math.random() * (i + 1)); // create a random number from the array lengthy
-      this.cardsArray[randIndex].style.order = i; // taking random item in the grid list
-      this.cardsArray[i].style.order = randIndex; //changing the items order
+      cardsArray[randIndex].style.order = i; // taking random item in the grid list
+      cardsArray[i].style.order = randIndex; //changing the items order
     }
   }
 
   getCardType(card) {
-    return card.getElementById();
+    return card.getElementsByClassName("cardFront cardFace")[0].id;
   }
 
   canFlipCard(card) {
-    return;
-    !this.busy &&
-      !this.matchedCards.includes(card) &&
-      card !== this.cardToCheck;
+    return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
     // if all three values are false, the statement returns true and you can flip the card
   }
 }
 
 function play() {
-  let startButton = document.getElementsByClassName("startBtn");
+  // let startButton = document.getElementsByClassName("startBtn");
   // put all of the cards in an array
-  let cards = Array.from(document.querySelectorAll(".card"));
+  let cards = Array.from(document.getElementsByClassName("card"));
   let game = new MixOrMatch(100, cards);
 
+  game.startGame();
   // startButton.addEventListener("click", game.startGame);
 
   cards.forEach(card => {
@@ -128,7 +130,20 @@ function play() {
       game.flipCard(card); // run this function
     });
   });
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // On click of start Button:
 //     allows cards to start fliping over on click
