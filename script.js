@@ -16,7 +16,7 @@ class MixOrMatch {
       this.shuffleCards(this.cardsArray);
       this.countDown = this.startCountDown();
       this.busy = false;
-    }, 500);
+    }, 200);
 
     this.hideCards();
     this.timer.innerText = this.timeRemaining;
@@ -34,11 +34,34 @@ class MixOrMatch {
   gameOver() {
     // looks at when the countdown ends and shows a game over
     clearInterval(this.countDown);
-    document.getElementById("game-over-text").classList.add("visible");
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+      card.classList.add("matched");
+    });
+    let mainDiv = document.querySelector(".master");
+    let gameOverText = document.createElement("h1");
+    gameOverText.classList.add("game-over")
+    gameOverText.innerHTML =
+      `Game Over 😭<br>
+    Press Restart to reset the board`;
+    setTimeout(function () {
+      mainDiv.appendChild(gameOverText)
+    }, 1000);
+    ;
   }
   victory() { // shows the victory screen on win
     clearInterval(this.countDown);
-    document.getElementById("victory-text").classList.add("visible");
+    let mainDiv = document.querySelector(".master");
+    let victoryText = document.createElement("h1");
+    victoryText.classList.add("victory-text")
+    victoryText.innerText = "You've won! 😹";
+    setTimeout(function () {
+      mainDiv.appendChild(victoryText)
+    }, 1000);
+    ;
+
+
+
   }
 
   hideCards() { // function to bring cards back
@@ -65,7 +88,7 @@ class MixOrMatch {
   checkForCardMatch(card) {
     if (this.getCardType(card) === this.getCardType(this.cardToCheck))
       // checks to see if the card type for each clicked is the same
-      this.checkMatch(card, this.cardToCheck);
+      this.cardMatch(card, this.cardToCheck);
     // if so, runs the checkMatch function
     else
       this.cardMisMatch(card, this.cardToCheck); // if not, runs the misMatch function
@@ -77,12 +100,18 @@ class MixOrMatch {
     // takes both of the cards  that were matched and pushes them to an array
     this.matchedCards.push(card1);
     this.matchedCards.push(card2);
-    card1.classList.add("matched"); // this will be the class that removes them from the board
-    card2.classList.add("matched");
+
+    setTimeout(function () {
+      card1.classList.add("matched"); // this will be the class that removes them from the board
+      card2.classList.add("matched");
+    }, 1000);
+
     if (this.matchedCards.length === this.cardsArray.length)
       // checks the array lengths, when it's the same the game will be completed
       this.victory();
   }
+
+
 
   cardMisMatch(card1, card2) {
     this.busy = true;
@@ -118,7 +147,7 @@ function play() {
   // let startButton = document.getElementsByClassName("startBtn");
   // put all of the cards in an array
   let cards = Array.from(document.getElementsByClassName("card"));
-  let game = new MixOrMatch(100, cards);
+  let game = new MixOrMatch(20, cards);
 
   game.startGame();
   // startButton.addEventListener("click", game.startGame);
@@ -132,7 +161,9 @@ function play() {
   });
 
 }
-
+function reloadPage() { //target from HTML "on click"
+  window.location.reload(); //method to refresh the page add your value at the end
+}
 
 
 

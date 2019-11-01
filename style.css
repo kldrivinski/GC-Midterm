@@ -1,5 +1,5 @@
-.portrait {
-  display: flex;
+h1{
+  display:flex;
   justify-content: center;
   align-items: center;
 }
@@ -123,6 +123,19 @@ li {
   transform: rotateY(180deg);
 }
 
+.card.matched{
+  display: none;
+}
+
+
+.victory-text{
+  text-align: center;
+}
+
+.game-over{
+  text-align: center;
+}
+
 #card1 {
   border: 2px solid rgb(158, 97, 97);
   height: 100px;
@@ -153,6 +166,11 @@ li {
   box-shadow: 5px 5px rgb(192, 192, 192, 0.5);
 }
 
+
+img{
+  height: 100px;
+  width: 80px;
+}
 
 
 
