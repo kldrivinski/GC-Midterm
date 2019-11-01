@@ -1,23 +1,19 @@
-
-.portrait{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-
-
+.portrait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.landAndUp{
-       display:none
-       }
-   
+.landAndUp {
+  display: none;
+}
+
 body {
-margin: 0px;
- display: flex;
- flex-direction: column;
- background-color: rgb(205, 243, 222);
- font-family: sans-serif;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(205, 243, 222);
+  font-family: sans-serif;
 }
 
 .head {
@@ -26,7 +22,6 @@ margin: 0px;
   padding: 5px;
   align-items: center;
   /* background-color: rgba(245, 245, 245, 0.8); */
- 
 }
 
 h1 {
@@ -40,21 +35,20 @@ h1 {
   margin-left: 5px;
   margin-right: 5px;
   align-items: center;
-
 }
 
-button{
+button {
   margin: 20px;
   height: 20px;
   width: 100%;
 }
 
-.todo{
+.todo {
   margin-left: 60px;
   margin-right: 20px;
- }
+}
 
-h2{
+h2 {
   font-size: 20px;
 }
 
@@ -64,53 +58,95 @@ ul {
 
 li {
   font-size: 15px;
-
-
 }
 
 .master {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin-left: 20px;
-  margin-right: 20px;
+  margin-right: 20px; */
 
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 10px;
+  margin: 50px;
+  justify-content: center;
+ 
 }
 
-.cardBack{
+.card {
+  position: relative;
+  height: 175px;
+  width: 125px;
+}
+
+
+.cardFace {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden;
+  transition: transform 500ms ease-in-out;
+  backface-visibility: hidden;
+}
+
+
+
+.card.visible .cardBack {
+  transform: rotateY(-180deg);
+}
+
+.card.visible .cardFront {
+  transform: rotateY(0deg);
+}
+
+.cardBack {
   border: 2px solid rgba(245, 245, 245, 0.8);
   height: 100px;
-  width:80px;
-  margin: 5px;
+  width: 80px;
+  /* margin: 5px; */
   border-radius: 10px;
   background-color: silver;
   box-shadow: 5px 5px rgb(192, 192, 192, 0.5);
 }
 
-#card1{
+
+
+.cardFront {
+  transform: rotateY(180deg);
+}
+
+#card1 {
   border: 2px solid rgb(158, 97, 97);
   height: 100px;
-  width:80px;
+  width: 80px;
   margin: 5px;
   border-radius: 10px;
   background-color: coral;
   box-shadow: 5px 5px rgb(192, 192, 192, 0.5);
 }
 
-#card2{
+#card2 {
   border: 2px solid rgb(158, 97, 97);
   height: 100px;
-  width:80px;
+  width: 80px;
   margin: 5px;
   border-radius: 10px;
   background-color: purple;
   box-shadow: 5px 5px rgb(192, 192, 192, 0.5);
 }
 
-#card3{
+#card3 {
   border: 2px solid rgb(158, 97, 97);
   height: 100px;
-  width:80px;
+  width: 80px;
   margin: 5px;
   border-radius: 10px;
   background-color: blue;
@@ -118,25 +154,24 @@ li {
 }
 
 
+
+
+
 @media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
-    .portraitMode {
-        display: none;
-      }
+  .portraitMode {
+    display: none;
+  }
 
-      .landAndUp{
-        
-       display: initial;
-       
-       }
-
-   }
+  .landAndUp {
+    display: initial;
+  }
+}
 @media only screen and (min-width: 600px) {
   .portraitMode {
     display: none;
   }
-  .landAndUp{
-   
-   display:initial
-   }
-}
 
+  .landAndUp {
+    display: initial;
+  }
+}
