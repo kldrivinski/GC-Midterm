@@ -1,5 +1,5 @@
-h1{
-  display:flex;
+h1 {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -72,7 +72,6 @@ li {
   grid-gap: 10px;
   margin: 50px;
   justify-content: center;
- 
 }
 
 .card {
@@ -80,7 +79,6 @@ li {
   height: 175px;
   width: 125px;
 }
-
 
 .cardFace {
   position: absolute;
@@ -96,8 +94,6 @@ li {
   transition: transform 500ms ease-in-out;
   backface-visibility: hidden;
 }
-
-
 
 .card.visible .cardBack {
   transform: rotateY(-180deg);
@@ -117,22 +113,19 @@ li {
   box-shadow: 5px 5px rgb(192, 192, 192, 0.5);
 }
 
-
-
 .cardFront {
   transform: rotateY(180deg);
 }
 
-.card.matched{
+.card.matched {
   display: none;
 }
 
-
-.victory-text{
+.victory-text {
   text-align: center;
 }
 
-.game-over{
+.game-over {
   text-align: center;
 }
 
@@ -166,14 +159,10 @@ li {
   box-shadow: 5px 5px rgb(192, 192, 192, 0.5);
 }
 
-
-img{
+img {
   height: 100px;
   width: 80px;
 }
-
-
-
 
 @media only screen and (min-device-width: 480px) and (max-device-width: 640px) and (orientation: landscape) {
   .portraitMode {
